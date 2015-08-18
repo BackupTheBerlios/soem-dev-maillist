@@ -1,0 +1,36 @@
+From manuel.vonthron at opal-rt.com  Wed Jan 22 17:36:04 2014
+From: manuel.vonthron at opal-rt.com (Manuel Vonthron)
+Date: Wed, 22 Jan 2014 16:36:04 +0000
+Subject: [Soem-dev] Likely error in oshw/linux/nicdrv.c
+Message-ID: <0FA119D99613CD4D94F2FC8907EF2F0F9B8035C8@Exchange2010.hq-mtl.opal-rt.com>
+
+Hi all,
+
+I came across the Linux implementation of the network layer for EtherCAT and found this : (version 1.3.0, oshw/linux/nicdrv.c, line 184)
+
+/* set flags of NIC interface, here promiscuous and broadcast */
+ifr.ifr_flags = ifr.ifr_flags || IFF_PROMISC || IFF_BROADCAST;
+r = ioctl(*psock, SIOCGIFFLAGS, &ifr);
+
+It *really* looks like a bitwise OR was intended instead of a logical one.
+Can someone confirm/disconfirm this?
+
+
+Manuel
+
+
+
+
+
+Manuel Vonthron
+Driver developer
+Opal-RT Technologies
+Montreal, Qc, Canada
+Tel. 514-935-2323 #288
+manuel.vonthron at opal-rt.com<mailto:manuel.vonthron at opal-rt.com>
+http://www.opal-rt.com<http://www.opal-rt.com/>
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/soem-dev/attachments/20140122/430bcfa2/attachment.html>
+

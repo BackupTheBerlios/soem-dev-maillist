@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Soem-dev] sdo startup method
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/soem-dev/2011-February/index.html" >
+   <LINK REL="made" HREF="mailto:soem-dev%40lists.berlios.de?Subject=Re%3A%20%5BSoem-dev%5D%20sdo%20startup%20method&In-Reply-To=%3C3835CAD3-60AE-411E-9678-E0836127C125%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Soem-dev] sdo startup method</H1>
+    <B>asa hammond</B> 
+    <A HREF="mailto:soem-dev%40lists.berlios.de?Subject=Re%3A%20%5BSoem-dev%5D%20sdo%20startup%20method&In-Reply-To=%3C3835CAD3-60AE-411E-9678-E0836127C125%40gmail.com%3E"
+       TITLE="[Soem-dev] sdo startup method">asa.mlists at gmail.com
+       </A><BR>
+    <I>Tue Feb  1 08:33:05 CET 2011</I>
+    <P><UL>
+        
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#0">[ date ]</a>
+              <a href="thread.html#0">[ thread ]</a>
+              <a href="subject.html#0">[ subject ]</a>
+              <a href="author.html#0">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello all, started playing with SOEM and have some questions.
+
+I am working with an EL6731 and would like to program it the same way twincat is working for me. I would like to send an entire startup line to an sdo all at once using complete access I believe.  an example line (in twincat gui) would be 
+&lt;PS&gt;	CoE				0x1C32 C 0		03 00 01 00 00 1B B7 00 00 00 00 00			EL67xx CoE Init Cmd 0 (1C32:00)
+
+which would be sending 03 00 01 00 00 1B B7 00 00 00 00 00  to  0x1C32 in the transition from PREOP to SAFEOP
+
+I have followed the startup flowchart in the infosys.
+
+I have played with the ec_SDOwrite() proc with no luck getting my device to OP correctly.
+
+I can get it to OP in etherlab using a series of ethercat download steps, but I would love to get it going under SOEM.
+
+Is it possible to send the data in one go?  If I have the working lines from twincat I should be good no?
+
+Thank you for any help.
+
+
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#0">[ date ]</a>
+              <a href="thread.html#0">[ thread ]</a>
+              <a href="subject.html#0">[ subject ]</a>
+              <a href="author.html#0">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/soem-dev">More information about the Soem-dev
+mailing list</a><br>
+</body></html>

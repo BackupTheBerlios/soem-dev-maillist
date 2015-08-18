@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Soem-dev] Compiling problem in ubuntu oneiric (solved)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/soem-dev/2012-February/index.html" >
+   <LINK REL="made" HREF="mailto:soem-dev%40lists.berlios.de?Subject=Re%3A%20%5BSoem-dev%5D%20Compiling%20problem%20in%20ubuntu%20oneiric%20%28solved%29&In-Reply-To=%3C1368853.T3Gsmuf7CJ%40tintin%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Soem-dev] Compiling problem in ubuntu oneiric (solved)</H1>
+    <B>Orestes Mas</B> 
+    <A HREF="mailto:soem-dev%40lists.berlios.de?Subject=Re%3A%20%5BSoem-dev%5D%20Compiling%20problem%20in%20ubuntu%20oneiric%20%28solved%29&In-Reply-To=%3C1368853.T3Gsmuf7CJ%40tintin%3E"
+       TITLE="[Soem-dev] Compiling problem in ubuntu oneiric (solved)">orestes at tsc.upc.edu
+       </A><BR>
+    <I>Sun Feb  5 01:27:09 CET 2012</I>
+    <P><UL>
+        
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2">[ date ]</a>
+              <a href="thread.html#2">[ thread ]</a>
+              <a href="subject.html#2">[ subject ]</a>
+              <a href="author.html#2">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Just to let you know, SOEM compilation in ubuntu oneiric fail with the 
+following error message:
+
+gcc -O2 -lpthread -lm -lrt -lc -lpq -Wall -o red_test red_test.o 
+ethercatconfig.o ethercatcoe.o ethercatdc.o ethercatmain.o ethercatbase.o 
+ethercatprint.o ethercatsoe.o nicdrv.o
+
+red_test.o: In function `main':
+
+red_test.c:(.text.startup+0xae): undefined reference to `pthread_create'
+
+The cause (see <A HREF="http://ubuntuforums.org/showthread.php?t=1833136">http://ubuntuforums.org/showthread.php?t=1833136</A>) seems to be 
+oneiric using the linker flag &quot;--as-needed&quot; by default. With this flag correct 
+ordering of libraries and objects on the commandline is important.
+
+Objects needing symbols must be placed before libraries providing them, so the 
+right compiling command has to be:
+
+gcc -O2  -lm -lrt -lc -lpq -Wall -o red_test red_test.o ethercatconfig.o 
+ethercatcoe.o ethercatdc.o ethercatmain.o ethercatbase.o ethercatprint.o 
+ethercatsoe.o nicdrv.o -lpthread
+
+
+-- 
+Cordialment,
+
+Orestes Mas.
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2">[ date ]</a>
+              <a href="thread.html#2">[ thread ]</a>
+              <a href="subject.html#2">[ subject ]</a>
+              <a href="author.html#2">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/soem-dev">More information about the Soem-dev
+mailing list</a><br>
+</body></html>
